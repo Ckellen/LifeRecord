@@ -1,0 +1,30 @@
+# 2024-11-08
+Lambda表达式
+    Lambda表达式是C++11引入的一种匿名函数, 可以用于定义简单的函数对象。
+    Lambda表达式可以捕获外部作用域中的变量, 并且可以定义自己的参数列表和返回类型。
+    Lambda表达式通常用于需要临时定义函数对象的地方, 例如作为算法的参数。
+
+示例1: 无参数、无返回值的Lambda表达式
+```cpp
+[] {
+    std::cout << "Hello, Lambda!" << std::endl;
+}();
+```
+最后的()表示立即调用这个Lambda表达式。
+
+示例2: 有参数、有返回值的Lambda表达式
+```cpp
+auto add = [](int a, int b) -> int {
+    return a + b;
+};
+
+std::cout << add(2, 3) << std::endl; // 输出5
+```
+在这个例子中, Lambda表达式捕获了外部作用域中的int型变量a和b, -> int是返回类型的显式指定, 可以省略, 编译器会自动推导。
+
+示例3: 捕获外部变量
+```cpp
+int x = 10;
+auto add_x = [x](int a) -> int {
+    
+}
