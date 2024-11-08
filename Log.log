@@ -25,6 +25,35 @@ std::cout << add(2, 3) << std::endl; // 输出5
 示例3: 捕获外部变量
 ```cpp
 int x = 10;
-auto add_x = [x](int a) -> int {
-    
+auto add_x = [x](int a) {
+    return a + x;
+};
+
+std::cout << add_x(2) << std::endl; // 输出12
+```
+在这个例子中, Lambda表达式捕获了外部作用域中的int型变量x。捕获的变量是按值捕获的, 所以x的值被复制到Lambda表达式中。
+
+示例4: 按引用捕获外部变量
+```cpp
+int x = 10;
+auto add_x = [&x](int a) {
+    return a + x;
+};
+
+std::cout << add_x(2) << std::endl; // 输出12
+std::cout << add_x(3) << std::endl; // 输出15
+```
+在这个例子中, Lambda表达式捕获了外部作用域中的int型变量x, 所以对x的修改会影响到外部变量。
+
+示例5: 使用STL算法
+```cpp
+std::vector<int> vec = {1, 2, 3, 4, 5};
+std::for_each(vec.begin(), vec.end(), [](int x) {
+    x *= 2;
+});
+
+for (int x : vec) {
+    std::cout << x << " ";  // 输出: 2 4 6 8 10
 }
+```
+这个Lambda表达式被用作std::for_each算法的操作函数, 用于将向量中的每个元素乘以2。
